@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  ldap-server:
+    build: ldap-server
+    container_name: ldap-server
+    ports:
+     - "8000:8000"
+     - "1389:1389"
+  vulnerable-app:
+    build: vulnerable-app
+    container_name: vulnerable-app
+    ports:
+      - "8080:8080"

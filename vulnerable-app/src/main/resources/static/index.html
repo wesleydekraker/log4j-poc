@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example site</title>
+    </head>
+    <body>
+        <h1>Example site</h1>
+
+        <form action="#">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="button" value="Login" onclick="login();">
+        </form>
+
+        <p id="message"></p>
+
+        <script>
+            function login() {
+                document.getElementById("message").innerHTML = ""
+                var formData = new FormData(document.querySelector('form'))
+
+                fetch("/login", {method: "post", body: formData})
+                    .then(response => response.text())
+                    .then(responseText => document.getElementById("message").innerHTML = responseText)
+            }
+        </script>
+    </body>
+</html>
